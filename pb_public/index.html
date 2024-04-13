@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Measure</title>
+    <script src="js/pocketbase.umd.js" type="text/javascript"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <main class="main-container">
+      <div id="app" style="width: 480px; height: 320px" class="app-container">
+        <div class="latest-value-container" style="height: 20%">
+          <div class="latest-ts">
+            <div id="latest_ts">--/-- --:--</div>
+            <div id="measuring">Measuring...</div>
+          </div>
+          <div id="latest_value">--</div>
+        </div>
+        <div style="height: 80%" class="chart-container">
+          <canvas id="chart"></canvas>
+        </div>
+      </div>
+    </main>
+    <script src="/js/index.js" type="text/javascript"></script>
+  </body>
+</html>
