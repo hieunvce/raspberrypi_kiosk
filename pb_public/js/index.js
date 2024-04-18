@@ -5,6 +5,35 @@ let latestValues = {};
 let measurements = [];
 let chart;
 
+// ------------------------------------------------------------
+async function fetchConfigs() {
+  return await pb.collection("configs").getFullList({
+    sort: "name",
+  });
+}
+function getConfig(configs, name) {
+  if (!configs || !Array.isArray(configs)) return null;
+  const config = configs.find((v) => v.name === name);
+  if (!config) return null;
+
+  const value = config.value;
+  const dataType = config.data_type;
+  switch (dataType) {
+    case "S":
+      return value;
+
+    case "N":
+      return 
+
+    case "BOOL":
+      break;
+
+    default:
+      return null; // Not support data type
+  }
+}
+// ------------------------------------------------------------
+
 async function getMetrics() {
   return await pb.collection("metrics").getFullList({
     sort: "name",
@@ -99,7 +128,7 @@ function drawChart(id, name, timeseries) {
 
 async function reRender() {
   const latestRecord = await getLatestMeasurement();
-  renderText("latest_value", roundDecimal(latestRecord.value,2));
+  renderText("latest_value", roundDecimal(latestRecord.value, 2));
   renderText("latest_ts", formatTs(latestRecord.ts));
 
   measurements = await getMeasurements();
