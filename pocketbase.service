@@ -1,0 +1,11 @@
+[Unit]
+Description=Pocketbase server
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/home/pi/kiosk/run_pocketbase.sh
+Restart=on-abort
+Type=forking
+
+[Install]
+WantedBy=xsession.target

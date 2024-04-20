@@ -1,0 +1,11 @@
+[Unit]
+Description=Chromium kiosk
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/home/pi/kiosk/kiosk.sh
+Restart=on-abort
+Type=forking
+
+[Install]
+WantedBy=xsession.target

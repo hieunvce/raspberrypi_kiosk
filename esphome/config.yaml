@@ -1,0 +1,123 @@
+esphome:
+  name: i2c_mqtt_sensor
+  platform: ESP32
+  board: esp-wrover-kit
+
+logger:
+  level: DEBUG
+
+wifi:
+  ssid: "hmpiot"
+  password: "1234@1234"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "I2C MQTT Sensor Fallback Hotspot"
+    password: "1234@1234"
+
+mqtt:
+  broker: "10.3.141.1" # TODO: Change this broker to Raspberry Pi
+  username: "device"
+  password: ""
+
+i2c:
+  id: main_i2c
+  sda: GPIO21
+  scl: GPIO22
+  scan: True
+
+pcf8574:
+  - id: 'pcf8574_hub'
+    address: 0x20
+    pcf8575: false
+
+binary_sensor:
+  - platform: gpio
+    name: "LV 0"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 0
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 1"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 1
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 2"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 2
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 3"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 3
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 4"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 4
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 5"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 5
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 6"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 6
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  - platform: gpio
+    name: "LV 7"
+    pin:
+      pcf8574: pcf8574_hub
+      number: 7
+      inverted: true
+      mode:
+        input: true
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+  
